@@ -1114,3 +1114,35 @@ body, input, textarea, select {
 .scroll-instruction {
     margin-top: 0 !important; /* Remove any extra top margin */
 }
+
+/* ===== VIDEO GALLERY SUPPORT ===== */
+
+/* Video thumbnails in gallery */
+.gallery article video.video-thumb {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Ensure videos behave like images in the gallery */
+.gallery article a.image.fit video {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Video in lightbox */
+.lightbox-content video {
+    max-width: 100%;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Smooth video loading */
+video {
+    background: #000;
+}

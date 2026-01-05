@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build:gallery"
+  publish = "."
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+
+[build.environment]
+  NODE_VERSION = "18"

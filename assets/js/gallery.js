@@ -1,27 +1,28 @@
 /*!
- * Gallery loader with category filtering and lazy loading
- * - Loads images with category data attributes
- * - Supports filtering by exteriors, interiors, product
- * - Auto-loads more images when scrolling near bottom
+ * CMS-Driven Gallery Loader
+ * - Loads gallery items from CMS JSON files
+ * - Supports both images and videos
+ * - Respects order and category settings from CMS
+ * - Falls back to legacy numbered system if no CMS data
  */
 (function ($) {
   $(function () {
     // ===== CONFIGURATION =====
-    var totalImages = 133;   // total count
-    var firstBatch  = 30;    // initial images (reduced for better lazy loading)
-    var batchSize   = 30;    // per lazy load
+    var useCMS = true; // Set to false to use legacy numbered system
+    var cmsGalleryPath = 'content/gallery/';
+    var firstBatch = 30;
+    var batchSize = 30;
 
-    // ===== CATEGORY MAPPING =====
+    // ===== LEGACY CONFIGURATION (fallback) =====
+    var totalImages = 133;
+    var videoItems = [];
     var multiCategories = {
-  // Images that belong to multiple categories
-  'exteriors,product': [6, 11, 14, 16, 18, 19, 35, 45, 77, 80, 106, 131 ],
-  'interiors,product': [46, 47, 48 ],
-  
-  // Images that belong to single categories only
-  'exteriors': [2, 5, 6, 7, 9, 10, 13, 15, 17, 20, 22, 28, 29, 30, 31, 36, 37, 41, 42, 43, 44, 53, 55, 56, 58, 65, 73, 74, 75, 76, 78, 79, 81, 82, 83, 84, 85, 86, 87, 88, 94, 98, 99, 103, 104, 105, 112, 113, 114, 115, 116, 117, 118, 120, 122, 127, 128, 129, 130, 133,130,],
-  'interiors': [1, 3, 4, 8, 12, 21, 23, 24, 25, 26, 27, 28, 32, 33, 34, 38, 39, 40, 54, 57, 59, 60, 61, 62, 69, 70, 71, 72, 89, 95, 96, 97, 100, 102, 105, 107, 108, 109, 110, 111, 123],
-  'product': [15, 49, 50, 51, 52, 63, 64, 66, 67, 68, 90, 91, 92, 93, 97, 101, 119, 121, 124, 125, 126, 132, 133]
-};
+      'exteriors,product': [6, 11, 14, 16, 18, 19, 35, 45, 77, 80, 106, 131],
+      'interiors,product': [46, 47, 48],
+      'exteriors': [2, 5, 6, 7, 9, 10, 13, 15, 17, 20, 22, 28, 29, 30, 31, 36, 37, 41, 42, 43, 44, 53, 55, 56, 58, 65, 73, 74, 75, 76, 78, 79, 81, 82, 83, 84, 85, 86, 87, 88, 94, 98, 99, 103, 104, 105, 112, 113, 114, 115, 116, 117, 118, 120, 122, 127, 128, 129, 130, 133, 130],
+      'interiors': [1, 3, 4, 8, 12, 21, 23, 24, 25, 26, 27, 28, 32, 33, 34, 38, 39, 40, 54, 57, 59, 60, 61, 62, 69, 70, 71, 72, 89, 95, 96, 97, 100, 102, 105, 107, 108, 109, 110, 111, 123],
+      'product': [15, 49, 50, 51, 52, 63, 64, 66, 67, 68, 90, 91, 92, 93, 97, 101, 119, 121, 124, 125, 126, 132, 133]
+    };
 
     // ===== STATE =====
     var loaded  = 0;
@@ -30,9 +31,81 @@
     var allImages = []; // Store all loaded images data
     var observer = null; // Intersection Observer
     var loadTrigger = null; // Element that triggers lazy loading
+    var cmsItems = []; // Store CMS gallery items
+    var cmsLoaded = false;
 
     var $gallery = $('.gallery');
     var $loader  = $('#gallery-loader');
+
+    // ===== CMS LOADING =====
+    function loadCMSGallery() {
+      return fetch('content/gallery-index.json')
+        .then(function(response) {
+          if (!response.ok) throw new Error('CMS gallery not found');
+          return response.json();
+        })
+        .then(function(data) {
+          cmsItems = data.items || [];
+          // Sort by order field
+          cmsItems.sort(function(a, b) {
+            return (a.order || 0) - (b.order || 0);
+          });
+          // Filter published items only
+          cmsItems = cmsItems.filter(function(item) {
+            return item.published !== false;
+          });
+          cmsLoaded = true;
+          totalImages = cmsItems.length;
+          return cmsItems;
+        })
+        .catch(function(error) {
+          console.log('CMS gallery not available, using legacy system:', error);
+          useCMS = false;
+          cmsLoaded = false;
+          return null;
+        });
+    }
+
+    function buildCMSItem(item, index) {
+      var isVid = item.type === 'video';
+      var mediaUrl = item.media || '';
+      var thumbUrl = item.thumbnail || item.media || '';
+      var categories = item.categories || [];
+      var primaryCategory = categories[0] || 'uncategorized';
+      var allCats = categories.join(' ');
+
+      var mediaHtml = '';
+      if (isVid) {
+        mediaHtml = '<video src="' + thumbUrl + '" '
+          + 'autoplay loop muted playsinline '
+          + 'class="video-thumb" '
+          + 'alt="' + (item.title || 'Gallery video') + '" '
+          + 'loading="lazy">'
+          + '</video>';
+      } else {
+        mediaHtml = '<img src="' + thumbUrl + '" '
+          + 'alt="' + (item.title || 'Gallery image') + '" '
+          + 'loading="lazy" decoding="async">';
+      }
+
+      return {
+        number: index,
+        category: primaryCategory,
+        categories: categories,
+        isVideo: isVid,
+        title: item.title || '',
+        html: ''
+          + '<article class="' + (index % 2 === 0 ? 'from-right' : 'from-left') + '" '
+          + 'data-category="' + primaryCategory + '" '
+          + 'data-categories="' + allCats + '" '
+          + 'data-image="' + index + '" '
+          + 'data-is-video="' + isVid + '">'
+          + '  <a href="' + mediaUrl + '" class="image fit" data-index="' + index + '" data-is-video="' + isVid + '">'
+          + mediaHtml
+          + '  </a>'
+          + '</article>'
+      };
+    }
 
     // ===== LAZY LOADING SETUP =====
     function initLazyLoading() {
@@ -99,31 +172,70 @@
      return cats[0]; // Return first category for existing code
 }
 
+    // Check if item is a video (legacy)
+    function isVideo(itemNum) {
+      return videoItems.indexOf(itemNum) !== -1;
+    }
+
     function buildItems(start, end) {
       var html = "";
       var items = [];
-      
+
+      // Use CMS items if available
+      if (useCMS && cmsLoaded) {
+        for (var i = start; i <= end && i < cmsItems.length; i++) {
+          var item = buildCMSItem(cmsItems[i], i);
+          items.push(item);
+          allImages.push(item);
+          html += item.html;
+        }
+        return html;
+      }
+
+      // Legacy numbered system
       for (var i = start; i <= end; i++) {
         var categories = getImageCategories(i);
-        var category = categories[0]; // Primary category for data attribute
-        var allCats = categories.join(' '); // All categories for filtering
-        
+        var category = categories[0];
+        var allCats = categories.join(' ');
+        var isVid = isVideo(i);
+        var fileExt = isVid ? '.mp4' : '.jpg';
+        var thumbExt = isVid ? '.mp4' : '.jpg';
+
+        var mediaHtml = '';
+        if (isVid) {
+          mediaHtml = '<video src="images/thumbs/' + i + thumbExt + '" '
+            + 'autoplay loop muted playsinline '
+            + 'class="video-thumb" '
+            + 'alt="Gallery video ' + i + '" '
+            + 'loading="lazy">'
+            + '</video>';
+        } else {
+          mediaHtml = '<img src="images/thumbs/' + i + thumbExt + '" '
+            + 'alt="Gallery image ' + i + '" '
+            + 'loading="lazy" decoding="async">';
+        }
+
         var item = {
           number: i,
           category: category,
+          isVideo: isVid,
           html: ''
-            + '<article class="' + (i % 2 === 0 ? 'from-right' : 'from-left') + '" data-category="' + category + '" data-categories="' + allCats + '" data-image="' + i + '">'
-            + '  <a href="images/fulls/' + i + '.jpg" class="image fit" data-index="' + i + '">'
-            + '    <img src="images/thumbs/' + i + '.jpg" alt="Gallery image ' + i + '" loading="lazy" decoding="async">'
+            + '<article class="' + (i % 2 === 0 ? 'from-right' : 'from-left') + '" '
+            + 'data-category="' + category + '" '
+            + 'data-categories="' + allCats + '" '
+            + 'data-image="' + i + '" '
+            + 'data-is-video="' + isVid + '">'
+            + '  <a href="images/fulls/' + i + fileExt + '" class="image fit" data-index="' + i + '" data-is-video="' + isVid + '">'
+            + mediaHtml
             + '  </a>'
             + '</article>'
         };
-        
+
         items.push(item);
         allImages.push(item);
         html += item.html;
       }
-      
+
       return html;
     }
 
@@ -206,9 +318,22 @@
     }
 
     // ===== INITIALIZATION =====
-    initLazyLoading();
-    initFilters();
-    loadImages(firstBatch);
+    function init() {
+      initLazyLoading();
+      initFilters();
+
+      if (useCMS) {
+        // Load CMS gallery first
+        loadCMSGallery().then(function() {
+          loadImages(firstBatch);
+        });
+      } else {
+        // Use legacy system
+        loadImages(firstBatch);
+      }
+    }
+
+    init();
 
     // ===== PUBLIC API =====
     window.GalleryState = {
@@ -233,6 +358,7 @@
     (function(){
       var lightbox   = document.getElementById('lightbox');
       var img        = lightbox.querySelector('.lightbox-img');
+      var video      = lightbox.querySelector('.lightbox-video');
       var closeBtn   = lightbox.querySelector('.close');
       var prevBtn    = lightbox.querySelector('.prev');
       var nextBtn    = lightbox.querySelector('.next');
@@ -243,13 +369,34 @@
         var el = galleryEls[index];
         if (!el) return;
         currentIndex = index;
-        img.src = el.href;
+
+        var isVid = el.getAttribute('data-is-video') === 'true';
+
+        if (isVid) {
+          // Show video, hide image
+          img.style.display = 'none';
+          img.src = '';
+          video.style.display = 'block';
+          video.src = el.href;
+          video.load();
+          video.play();
+        } else {
+          // Show image, hide video
+          video.style.display = 'none';
+          video.pause();
+          video.src = '';
+          img.style.display = 'block';
+          img.src = el.href;
+        }
+
         lightbox.classList.remove('hidden');
       }
 
       function closeLightbox(){
         lightbox.classList.add('hidden');
         img.src = '';
+        video.pause();
+        video.src = '';
         currentIndex = -1;
       }
 

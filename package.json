@@ -1,0 +1,12 @@
+{
+  "name": "dp-3d-support",
+  "version": "1.0.0",
+  "description": "3D Support Portfolio Website with CMS",
+  "scripts": {
+    "build:gallery": "node build-gallery.js",
+    "prebuild": "npm run build:gallery"
+  },
+  "keywords": ["portfolio", "3d", "netlify-cms"],
+  "author": "",
+  "license": "MIT"
+}
