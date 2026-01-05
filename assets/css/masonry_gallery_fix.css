@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900");
+@import url("fontawesome-all.min.css");
+
+/*
+	Big Picture by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;}
+
+/* ... [all your existing CSS unchanged until the Gallery section] ... */
+
+/* Gallery */
+
+.gallery {
+  column-count: 3;   /* Default */
+  column-gap: 0;     /* No white spaces between images */
+  width: 100vw;
+  max-width: none;
+  margin: 0 calc(-50vw + 50%) 2em calc(-50vw + 50%);
+  padding: 0;
+}
+
+.gallery article {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  break-inside: avoid;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.gallery article:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.gallery article .image {
+  margin: 0;
+  display: block;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery article .image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery article:hover .image img {
+  transform: scale(1.05);
+}
+
+.gallery article .image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+.gallery article:hover .image::after {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Breakpoints */
+@media screen and (max-width: 1920px) {
+  .gallery {
+    column-count: 5;
+  }
+}
+
+@media screen and (max-width: 1680px) {
+  .gallery {
+    column-count: 4;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .gallery {
+    column-count: 3;
+    padding: 0 1.5em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .gallery {
+    column-count: 1;
+    padding: 0 1em;
+  }
+}
+
+/* ... [rest of your CSS stays unchanged after Gallery section] ... */

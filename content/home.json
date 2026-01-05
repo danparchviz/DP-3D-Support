@@ -1,0 +1,20 @@
+{
+  "site_title": "DP 3D Support",
+  "intro_heading": "Hello.",
+  "intro_tagline": "I Help you Refine, Improve, and Present your Designs and Ideas.",
+  "intro_bg": "/images/intro.jpg",
+  "what_i_do": {
+    "heading": "What I Do",
+    "content": "I collaborate with creative professionals to transform concepts into compelling visuals. Whether it's architecture, interiors, landscapes, or products, I support every stage: from testing ideas to presenting them with impact.",
+    "bg_image": "/images/one.jpg"
+  },
+  "who_i_am": {
+    "heading": "Who I Am",
+    "content": "I'm an architecture-trained 3D visualizer with more than 15 years of experience. I studied architecture from 2008 to 2014 and spent a couple of years in practice. From 2018 to 2022 I worked at a leading archviz studio, creating visuals for major firms on projects of all scales and types.\n\nSince 2022 I've been working independently with architects, interior designers, and makers on a mix of projects. That includes buildings, interiors, landscapes, products, and tech concepts. Recent work includes visuals for a cold-plunge manufacturer, a drone assembly presentation, and a high-diving tower proposal.\n\nI love being part of the creative process. I help people explore ideas, shape their designs, and share their vision in a way that sparks excitement.",
+    "bg_image": "/images/two.jpg"
+  },
+  "work": {
+    "heading": "My Work",
+    "subheading": "Browse by category or dive in below."
+  }
+}

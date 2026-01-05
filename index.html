@@ -1,0 +1,1011 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>DP 3D Support</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/main.min.css" >
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="assets/css/overrides.css">
+    
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<h1>3D Support</h1>
+				<nav>
+					<ul>
+						<li><a href="#intro">Intro</a></li>
+						<li><a href="#one">What I Do</a></li>
+						<li><a href="#two">Who I Am</a></li>
+						<li><a href="#work">My Work</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</header>
+
+	<!-- Intro -->
+<section id="intro" class="main style1 dark fullscreen">
+    <div class="content">
+        <header>
+            <h2>Hello.</h2>
+        </header>
+        <p class="main-tagline" id="lightWords">
+  <strong>I Help you Refine</strong>, <strong>Improve</strong>, and <strong>Present</strong><br />
+  your <strong>Designs and Ideas</strong>.
+</p>
+
+        
+        <p class="scroll-instruction">
+    Scroll for <a href="#one"><strong>What I Do</strong></a> and <a href="#two"><strong>Who I Am</strong></a>
+</p>
+
+    </div>
+    
+    <a href="#one" class="button style2 down anchored">Next</a>
+</section>
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>What I Do</h2>
+					</header>
+					<p>I collaborate with creative professionals to transform concepts into compelling visuals.
+             Whether it’s architecture, interiors, landscapes, or products, I support every stage: from testing ideas to presenting them with impact.</p>
+
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Who I Am</h2>
+					</header>
+					<p>
+    I'm an architecture-trained 3D visualizer with more than 15 years of experience.
+    <span class="key-line">I studied architecture from 2008 to 2014 and spent a couple of years in practice.</span>
+    <span class="key-line">From 2018 to 2022 I worked at a leading archviz studio, creating visuals for major firms on projects of all scales and types.</span>
+  </p>
+
+  <p>
+    Since 2022 I've been working independently with architects, interior designers, and makers on a mix of projects.
+    <span class="key-line">That includes buildings, interiors, landscapes, products, and tech concepts.</span>
+    <span class="key-line">Recent work includes visuals for a cold-plunge manufacturer, a drone assembly presentation, and a high-diving tower proposal.</span>
+  </p>
+
+  <p class="closing">
+    I love being part of the creative process.
+    <span class="key-line">I help people explore ideas, shape their designs, and share their vision in a way that sparks excitement.</span>
+  </p>
+</section>
+
+
+				</div>
+				<a href="#one" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Work -->
+			<section id="work" class="main style3 primary">
+				<div class="content">
+					<header>
+						<h2>My Work</h2>
+						<p class="light-words-dark" id="lightWork">Browse by category or dive in below.</p>
+
+          <!-- Add filter controls after your existing header -->
+<div class="filter-controls" style="text-align: center; margin: 30px 0;">
+    <button class="filter-btn active" data-filter="all">All Work</button>
+    <button class="filter-btn" data-filter="exteriors">Exteriors</button>
+    <button class="filter-btn" data-filter="interiors">Interiors</button>
+    <button class="filter-btn" data-filter="product">Product</button>
+</div>                         
+
+					</header>
+
+					<!-- Gallery  -->
+						<div class="gallery">
+</div>
+
+<!-- Inline loader -->
+<div id="gallery-loader" class="loader" style="display: none;"></div>
+
+				</div>
+			</section>
+
+		
+
+		<!-- Footer -->
+			<footer id="footer">
+
+				<!-- Icons -->
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Dan Pepelea</li><li>Archviz Artist</a></li>
+					</ul>
+
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="assets/js/gallery.js"></script>
+
+
+            
+<script>
+/* Unified filter click handler (capture-phase): applies filter, then smooth-scrolls filter bar under header. */
+(function(){
+  // Guard if jQuery isn't loaded
+  var $doc = (window.jQuery && jQuery(document)) || null;
+  var controls = document.querySelector('.filter-controls');
+  var headerEl = document.getElementById('header');
+
+  function getHeaderOffset(){ return headerEl ? headerEl.offsetHeight : 0; }
+
+  // Temporary suppression of any auto scrollTo calls during filter apply
+  function withScrollSuppressed(fn){
+    var _scrollTo = window.scrollTo, _scrollBy = window.scrollBy;
+    var suppressed = true;
+    window.scrollTo = function(x, y){
+      // Ignore attempts to jump to very top while suppressed
+      if (suppressed && (y === 0 || (typeof x === 'object' && x && (x.top === 0 || x.top === '0')))) return;
+      return _scrollTo.apply(this, arguments);
+    };
+    window.scrollBy = function(){ if (!suppressed) return _scrollBy.apply(this, arguments); };
+    try { fn(); } finally {
+      // Restore after two frames to let layout finish
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ suppressed = false; window.scrollTo = _scrollTo; window.scrollBy = _scrollBy; }); });
+    }
+  }
+
+  function smoothScrollToFilter(){
+    if (!controls) return;
+    var offset = getHeaderOffset() + 8; // small breathing room
+    var y = controls.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  // Capture-phase so we preempt any other listeners
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest && e.target.closest('.filter-btn');
+    if (!btn) return;
+
+    // Kill default and stop all propagation so no other code changes hash/scrolls
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+
+    var filter = btn.getAttribute('data-filter') || 'all';
+
+    // Update active state
+    var nodes = document.querySelectorAll('.filter-btn');
+    for (var i=0;i<nodes.length;i++) nodes[i].classList.remove('active');
+    btn.classList.add('active');
+
+    // Apply filter while suppressing any auto scrolls
+    withScrollSuppressed(function(){
+      if (window.GalleryState && typeof window.GalleryState.applyFilter === 'function') {
+        window.GalleryState.applyFilter(filter);
+      }
+    });
+
+    // Do NOT touch history/hash at all to avoid any jumps
+    // Smoothly align the filter controls under the header
+    requestAnimationFrame(smoothScrollToFilter);
+  }, true); // <-- capture-phase
+})();
+</script>
+
+<!--
+<script>
+/* Focused smooth scrolling: header nav + 'down' arrows; excludes filter controls */
+(function(){
+  var header = document.getElementById('header');
+  function headerOffset(){ return header ? header.offsetHeight : 0; }
+
+  function easeInOutCubic(t){ return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2; }
+  function smoothTo(targetY, duration, done){
+    var startY = window.pageYOffset;
+    var startT = null;
+    function step(ts){
+      if (!startT) startT = ts;
+      var p = Math.min((ts - startT) / duration, 1);
+      var y = startY + (targetY - startY) * easeInOutCubic(p);
+      window.scrollTo(0, y);
+      if (p < 1) requestAnimationFrame(step); else if (done) done();
+    }
+    requestAnimationFrame(step);
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a) return;
+
+    // Exclusions: filter buttons, filter area
+    if (a.classList.contains('filter-btn') || a.closest('.filter-controls')) return;
+
+    // Target id
+    var href = a.getAttribute('href');
+    if (!href || href === '#' || href === '#0') return;
+    var id = href.slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+
+    // Prevent default and do smooth scroll
+    e.preventDefault();
+    var target = el.getBoundingClientRect().top + window.pageYOffset - headerOffset();
+    smoothTo(target, 900, function(){
+      try { history.replaceState(null, '', '#' + id); } catch (e) {}
+    });
+  }, true); // capture-phase to outrun other handlers
+})();
+</script>
+
+<script>
+// Simple back to categories button
+(function() {
+    var filterControls = document.querySelector('.filter-controls');
+    var workSection = document.getElementById('work');
+    var header = document.getElementById('header');
+    
+    if (!filterControls || !workSection || !header) return;
+    
+    // Create back button
+    var backButton = document.createElement('div');
+    backButton.innerHTML = '<button class="back-to-categories-btn">Back to Categories</button>';
+    backButton.style.cssText = 'position: fixed; top: 3em; left: 50%; transform: translateX(-50%); z-index: 1000; display: none;';
+    document.body.appendChild(backButton);
+    
+    // Show/hide button based on scroll
+    window.addEventListener('scroll', function() {
+        var filterRect = filterControls.getBoundingClientRect();
+        var isFilterVisible = filterRect.top >= header.offsetHeight;
+        
+        backButton.style.display = isFilterVisible ? 'none' : 'block';
+    });
+    
+    // Click handler
+    backButton.addEventListener('click', function() {
+    var headerHeight = header.offsetHeight;
+    var targetY = filterControls.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+});
+})();
+</script>
+
+-->
+
+<!-- Lightbox container -->
+<div id="lightbox" class="lightbox hidden">
+  <span class="close">&times;</span>
+  <img class="lightbox-img" alt="">
+  <div class="nav prev">&#10094;</div>
+  <div class="nav next">&#10095;</div>
+</div>
+
+<!-- Contact Lightbox -->
+<div id="contact-lightbox" class="lightbox hidden">
+  <span class="close">&times;</span>
+  <div class="contact-form-container">
+    <header>
+      <h2>Say Hello.</h2>
+      <p>Tell me what you're working on or just say hi.</p>
+    </header>
+    <form name="contact" method="POST" netlify>
+      <input type="hidden" name="form-name" value="contact">
+      <p style="display: none;">
+        <label>Don't fill this out: <input name="bot-field"></label>
+      </p>
+      
+      <div class="fields">
+        <div class="field half"><input type="text" name="name" placeholder="Name" required /></div>
+        <div class="field half"><input type="email" name="email" placeholder="Email" required /></div>
+        <div class="field"><textarea name="message" placeholder="Message" rows="6" required></textarea></div>
+      </div>
+      <ul class="actions special">
+        <li><input type="submit" value="Send Message" /></li>
+      </ul>
+    </form>
+  </div>
+</div>
+
+<script>
+
+// Section snapping optimized for fullscreen sections
+(function() {
+    console.log('Optimized section snapping loaded');
+    
+    const sections = ['intro', 'one', 'two'];
+    const header = document.getElementById('header');
+    let isSnapping = false;
+    let isSmoothScrolling = false;
+    let lastScrollTime = 0;
+    const scrollCooldown = 800;
+    
+    function getHeaderOffset() {
+        return header ? header.offsetHeight : 0;
+    }
+    
+    function isInWorkArea() {
+        const workSection = document.getElementById('work');
+        if (!workSection) return false;
+        
+        const rect = workSection.getBoundingClientRect();
+        const headerHeight = getHeaderOffset();
+        const viewportHeight = window.innerHeight;
+        
+        // Work section is "active" when it takes up significant viewport space
+        const workVisibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, headerHeight));
+        const workDominanceRatio = workVisibleHeight / (viewportHeight - headerHeight);
+        
+        console.log('Work section dominance:', Math.round(workDominanceRatio * 100) + '%');
+        
+        // Work area is active when it dominates the viewport (>50%)
+        return workDominanceRatio > 0.5;
+    }
+    
+    function getCurrentSectionIndex() {
+        const headerOffset = getHeaderOffset();
+        const viewportHeight = window.innerHeight;
+        
+        for (let i = 0; i < sections.length; i++) {
+            const section = document.getElementById(sections[i]);
+            if (!section) continue;
+            
+            const rect = section.getBoundingClientRect();
+            const sectionTop = rect.top;
+            const sectionBottom = rect.bottom;
+            const sectionHeight = rect.height;
+            
+            // Calculate visible portion of section
+            const visibleTop = Math.max(sectionTop, headerOffset);
+            const visibleBottom = Math.min(sectionBottom, viewportHeight);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+            const visibilityRatio = visibleHeight / sectionHeight;
+            
+            // Different requirements for different sections
+            let requiredVisibility;
+            if (sections[i] === 'two') { // "Who I Am" section - require 100%
+                requiredVisibility = 0.95; // 95% to account for any rounding issues
+            } else {
+                requiredVisibility = 0.7; // 70% for other sections
+            }
+            
+            console.log(`Section ${sections[i]}: ${Math.round(visibilityRatio * 100)}% visible (need ${Math.round(requiredVisibility * 100)}%)`);
+            
+            if (visibilityRatio >= requiredVisibility) {
+                console.log(`✓ Section ${sections[i]} activated for snapping`);
+                return i;
+            }
+        }
+        
+        console.log('No section meets visibility requirements');
+        return -1;
+    }
+    
+    function smoothScrollTo(targetY, duration = 900, callback) {
+        const startY = window.pageYOffset;
+        const distance = targetY - startY;
+        const startTime = performance.now();
+        
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2,3)/2;
+        }
+        
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeInOutCubic(progress);
+            const y = startY + distance * easedProgress;
+            
+            window.scrollTo(0, y);
+            
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                isSnapping = false;
+                isSmoothScrolling = false;
+                if (callback) callback();
+                console.log('Smooth scroll completed');
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    function snapToSection(sectionIndex) {
+        if (sectionIndex < 0 || sectionIndex >= sections.length) return;
+        
+        console.log(`>>> Snapping to section: ${sections[sectionIndex]}`);
+        
+        const targetSection = document.getElementById(sections[sectionIndex]);
+        if (!targetSection) return;
+        
+        isSnapping = true;
+        lastScrollTime = Date.now();
+        
+        const headerOffset = getHeaderOffset();
+        const targetY = targetSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        
+        smoothScrollTo(targetY, 900);
+    }
+    
+    function handleWheel(e) {
+        console.log('--- Wheel Event ---');
+        const now = Date.now();
+        
+        // Skip if currently snapping or in cooldown
+        if (isSnapping || isSmoothScrolling) {
+            console.log('❌ Blocked: Currently animating');
+            return;
+        }
+        
+        if (now - lastScrollTime < scrollCooldown) {
+            console.log('❌ Blocked: In cooldown');
+            return;
+        }
+        
+        // Check work area first
+        if (isInWorkArea()) {
+            console.log('📄 In work area: Normal scroll allowed');
+            return;
+        }
+        
+        // Check current section
+        const currentSection = getCurrentSectionIndex();
+        if (currentSection === -1) {
+            console.log('🚫 No active section: Normal scroll allowed');
+            return;
+        }
+        
+        // Section snapping logic
+        console.log(`🎯 Section snapping active - Current: ${sections[currentSection]}`);
+        
+        const scrollDirection = e.deltaY > 0 ? 1 : -1;
+        let targetSection;
+        
+        if (scrollDirection > 0) { // Scrolling down
+    // Special handling for transition from "Who I Am" to "Work"
+    if (currentSection === 2) { // "two" is "Who I Am" section
+        console.log('⬇️ Smoothly scrolling from "Who I Am" to work section');
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Smooth scroll to work section
+        const workSection = document.getElementById('work');
+        if (workSection) {
+            isSnapping = true;
+            lastScrollTime = Date.now();
+            const headerOffset = getHeaderOffset();
+            const targetY = workSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+            smoothScrollTo(targetY, 900);
+        }
+        return;
+    }
+    targetSection = currentSection + 1;
+} else { // Scrolling up
+    targetSection = currentSection - 1;
+}
+
+// Only snap if target section exists
+if (targetSection >= 0 && targetSection < sections.length) {
+    console.log(`🚀 SNAP TRIGGERED: ${sections[currentSection]} → ${sections[targetSection]}`);
+    
+    e.preventDefault();
+    e.stopPropagation();
+    
+    snapToSection(targetSection);
+} else {
+    console.log('⭕ Target out of bounds: Normal scroll');
+}
+    }
+    
+    // Handle navigation clicks
+    function handleNavigationClick(e) {
+        const link = e.target.closest && e.target.closest('a[href^="#"]');
+        if (!link) return;
+        
+        if (link.classList.contains('filter-btn') || link.closest('.filter-controls')) {
+            return;
+        }
+        
+        // Skip intro arrow - let it navigate normally
+    if (link.closest('#intro') && link.getAttribute('href') === '#one') {
+        return;
+    }
+        const href = link.getAttribute('href');
+        if (!href || href === '#' || href === '#0') return;
+        
+        const targetId = href.slice(1);
+        const targetElement = document.getElementById(targetId);
+        if (!targetElement) return;
+        
+        e.preventDefault();
+        
+        isSmoothScrolling = true;
+        const headerOffset = getHeaderOffset();
+        const targetY = targetElement.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        
+        smoothScrollTo(targetY, 900, function() {
+            try {
+                history.replaceState(null, '', '#' + targetId);
+            } catch (e) {}
+        });
+    }
+    
+    // Initialize
+    setTimeout(() => {
+        console.log('🎬 Initializing optimized section snapping...');
+        
+        document.addEventListener('wheel', handleWheel, { 
+            passive: false,
+            capture: true 
+        });
+        
+        document.addEventListener('click', handleNavigationClick, { 
+            capture: true 
+        });
+        
+        console.log('✅ Optimized section snapping ready');
+    }, 500);
+    
+})();
+
+// Mobile touch/swipe handling for section snapping (enhanced)
+(function() {
+    console.log('Mobile touch handler loaded');
+    
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let touchStartTime = 0;
+    let isProcessingTouch = false;
+    
+    const minSwipeDistance = 30; // Reduced threshold
+    const maxSwipeTime = 500; // Increased time window
+    const touchCooldown = 1000;
+    let lastTouchTime = 0;
+    
+    // Disable CSS smooth scrolling to prevent conflicts
+    document.documentElement.style.scrollBehavior = 'auto';
+    
+    function getCurrentSectionIndex() {
+        const sections = ['intro', 'one', 'two'];
+        const headerOffset = document.getElementById('header').offsetHeight;
+        const viewportHeight = window.innerHeight;
+        
+        for (let i = 0; i < sections.length; i++) {
+            const section = document.getElementById(sections[i]);
+            if (!section) continue;
+            
+            const rect = section.getBoundingClientRect();
+            const visibleTop = Math.max(rect.top, headerOffset);
+            const visibleBottom = Math.min(rect.bottom, viewportHeight);
+            const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+            const visibilityRatio = visibleHeight / rect.height;
+            
+            if (visibilityRatio >= 0.6) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    function isInWorkArea() {
+        const workSection = document.getElementById('work');
+        if (!workSection) return false;
+        
+        const rect = workSection.getBoundingClientRect();
+        const headerHeight = document.getElementById('header').offsetHeight;
+        const viewportHeight = window.innerHeight;
+        
+        const workVisibleHeight = Math.max(0, Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, headerHeight));
+        const workDominanceRatio = workVisibleHeight / (viewportHeight - headerHeight);
+        
+        return workDominanceRatio > 0.4;
+    }
+    
+    function smoothScrollToSection(sectionId) {
+        const targetSection = document.getElementById(sectionId);
+        if (!targetSection) return;
+        
+        console.log('Touch scrolling to:', sectionId);
+        
+        isProcessingTouch = true;
+        lastTouchTime = Date.now();
+        
+        const headerOffset = document.getElementById('header').offsetHeight;
+        const targetY = targetSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+        
+        // Use custom smooth scroll
+        const startY = window.pageYOffset;
+        const distance = targetY - startY;
+        const duration = 800;
+        const startTime = performance.now();
+        
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = progress < 0.5 ? 4*progress*progress*progress : 1 - Math.pow(-2*progress+2,3)/2;
+            const y = startY + distance * easeProgress;
+            
+            window.scrollTo(0, y);
+            
+            if (progress < 1) {
+                requestAnimationFrame(animate);
+            } else {
+                isProcessingTouch = false;
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    function handleTouchStart(e) {
+        // Skip if in work area
+        if (isInWorkArea()) return;
+        
+        // Skip if touching interactive elements
+        if (e.target.closest('a, button, .filter-btn, .lightbox')) return;
+        
+        if (e.touches.length === 1) {
+            touchStartY = e.touches[0].clientY;
+            touchStartTime = Date.now();
+            console.log('Touch start:', touchStartY);
+        }
+    }
+    
+    function handleTouchEnd(e) {
+        // Skip if in work area
+        if (isInWorkArea()) return;
+        
+        // Skip if touching interactive elements
+        if (e.target.closest('a, button, .filter-btn, .lightbox')) return;
+        
+        const now = Date.now();
+        
+        // Skip if currently processing or in cooldown
+        if (isProcessingTouch || (now - lastTouchTime < touchCooldown)) {
+            console.log('Touch blocked - processing or cooldown');
+            return;
+        }
+        
+        if (e.changedTouches.length === 1) {
+            touchEndY = e.changedTouches[0].clientY;
+            const touchTime = now - touchStartTime;
+            const swipeDistance = touchStartY - touchEndY;
+            const absSwipeDistance = Math.abs(swipeDistance);
+            
+            console.log('Touch end - Distance:', absSwipeDistance, 'Time:', touchTime);
+            
+            // Check if it's a valid swipe
+            if (absSwipeDistance < minSwipeDistance || touchTime > maxSwipeTime) {
+                console.log('Invalid swipe');
+                return;
+            }
+            
+            // Get current section
+            const currentSection = getCurrentSectionIndex();
+            console.log('Current section:', currentSection);
+            
+            if (currentSection === -1) return;
+            
+            const sections = ['intro', 'one', 'two'];
+            
+            // Determine swipe direction and target
+            if (swipeDistance > 0) {
+                // Swiping up (scrolling down)
+                console.log('Swipe up detected');
+                
+                if (currentSection === 2) {
+                    // From "Who I Am" to "Work"
+                    e.preventDefault();
+                    e.stopPropagation();
+                    smoothScrollToSection('work');
+                } else if (currentSection < 2) {
+                    // Normal section progression
+                    e.preventDefault();
+                    e.stopPropagation();
+                    smoothScrollToSection(sections[currentSection + 1]);
+                }
+            } else {
+                // Swiping down (scrolling up)
+                console.log('Swipe down detected');
+                
+                if (currentSection > 0) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    smoothScrollToSection(sections[currentSection - 1]);
+                }
+            }
+        }
+    }
+    
+    // Add touch event listeners with capture phase
+    document.addEventListener('touchstart', handleTouchStart, { passive: false, capture: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: false, capture: true });
+    
+    console.log('Mobile touch handlers attached');
+})();
+
+// Contact lightbox functionality
+(function() {
+    // Handle contact link clicks
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a[href="#contact"]');
+        if (link) {
+            e.preventDefault();
+            document.getElementById('contact-lightbox').classList.remove('hidden');
+        }
+    });
+    
+    // Close contact lightbox
+    const closeBtn = document.querySelector('#contact-lightbox .close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('contact-lightbox').classList.add('hidden');
+        });
+    }
+    
+    // Close on overlay click
+    const contactLightbox = document.getElementById('contact-lightbox');
+    if (contactLightbox) {
+        contactLightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.classList.add('hidden');
+            }
+        });
+    }
+    
+    // Close on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !document.getElementById('contact-lightbox').classList.contains('hidden')) {
+            document.getElementById('contact-lightbox').classList.add('hidden');
+        }
+    });
+})();
+
+
+// Back to categories button
+(function() {
+    const filterControls = document.querySelector('.filter-controls');
+    const workSection = document.getElementById('work');
+    const header = document.getElementById('header');
+    
+    if (!filterControls || !workSection || !header) return;
+    
+    // Create back button
+    const backButton = document.createElement('div');
+    backButton.innerHTML = '<button class="back-to-categories-btn">Back to Categories</button>';
+    backButton.style.cssText = 'position: fixed; top: 3em; left: 50%; transform: translateX(-50%); z-index: 1000; display: none;';
+    document.body.appendChild(backButton);
+    
+    // Show/hide button based on scroll
+    window.addEventListener('scroll', function() {
+        const filterRect = filterControls.getBoundingClientRect();
+        const isFilterVisible = filterRect.top >= header.offsetHeight;
+        
+        backButton.style.display = isFilterVisible ? 'none' : 'block';
+    });
+    
+    // Click handler
+    backButton.addEventListener('click', function() {
+        const headerHeight = header.offsetHeight;
+        const targetY = filterControls.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+        window.scrollTo({ top: targetY, behavior: 'smooth' });
+    });
+})();
+
+</script>
+
+<script>
+// Mobile hamburger menu (fixed version)
+(function() {
+    // Wait for DOM to be ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMobileMenu);
+    } else {
+        initMobileMenu();
+    }
+    
+    function initMobileMenu() {
+        const header = document.getElementById('header');
+        const nav = document.querySelector('#header nav');
+        
+        if (!header || !nav) return;
+        
+        // Create hamburger button with no text content
+        const hamburger = document.createElement('button');
+        hamburger.className = 'hamburger-menu';
+        hamburger.setAttribute('aria-label', 'Toggle navigation menu');
+        hamburger.innerHTML = `
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+        `;
+        
+        // Add hamburger to header
+        header.appendChild(hamburger);
+        
+        // Toggle mobile menu
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            nav.classList.toggle('mobile-open');
+            hamburger.classList.toggle('active');
+            document.body.classList.toggle('mobile-menu-open');
+        });
+        
+        // Close menu when clicking nav links
+        nav.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                nav.classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            }
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!header.contains(e.target) && nav.classList.contains('mobile-open')) {
+                nav.classList.remove('mobile-open');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('mobile-menu-open');
+            }
+        });
+    }
+})();
+</script>
+
+<script>
+// Mobile lightbox swipe functionality
+(function() {
+    const lightbox = document.getElementById('lightbox');
+    
+    if (!lightbox) return;
+    
+    // Create mobile X close button
+    function createMobileCloseButton() {
+        const mobileClose = document.createElement('button');
+        mobileClose.className = 'mobile-close-btn';
+        mobileClose.innerHTML = '×';
+        mobileClose.setAttribute('aria-label', 'Close image');
+        lightbox.appendChild(mobileClose);
+        
+        mobileClose.addEventListener('click', function() {
+            lightbox.classList.add('hidden');
+        });
+        
+        return mobileClose;
+    }
+    
+    function isMobileDevice() {
+        return window.innerWidth <= 768 || 'ontouchstart' in window;
+    }
+    
+    // Hide arrows on mobile, show on desktop
+    function updateNavigationDisplay() {
+        const prevNav = document.querySelector('#lightbox .nav.prev');
+        const nextNav = document.querySelector('#lightbox .nav.next');
+        const mobileCloseBtn = document.querySelector('.mobile-close-btn');
+        
+        if (isMobileDevice()) {
+            // Hide arrows on mobile
+            if (prevNav) prevNav.style.display = 'none';
+            if (nextNav) nextNav.style.display = 'none';
+            
+            // Show mobile close button
+            if (!mobileCloseBtn) {
+                createMobileCloseButton();
+            } else {
+                mobileCloseBtn.style.display = 'flex';
+            }
+        } else {
+            // Show arrows on desktop
+            if (prevNav) prevNav.style.display = 'block';
+            if (nextNav) nextNav.style.display = 'block';
+            
+            // Hide mobile close button
+            if (mobileCloseBtn) {
+                mobileCloseBtn.style.display = 'none';
+            }
+        }
+    }
+    
+    // Swipe detection
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 60; // 60px minimum swipe
+    
+    function handleTouchStart(e) {
+        if (!isMobileDevice() || lightbox.classList.contains('hidden')) return;
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+    }
+    
+    function handleTouchEnd(e) {
+        if (!isMobileDevice() || lightbox.classList.contains('hidden')) return;
+        touchEndX = e.changedTouches[0].clientX;
+        touchEndY = e.changedTouches[0].clientY;
+        handleSwipe();
+    }
+    
+    function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const absDeltaX = Math.abs(deltaX);
+    const absDeltaY = Math.abs(deltaY);
+    
+    if (Math.max(absDeltaX, absDeltaY) < minSwipeDistance) return;
+    
+    if (absDeltaY > absDeltaX) {
+        // Vertical swipe (up or down) = close lightbox
+        lightbox.classList.add('hidden');
+    } else {
+        // Horizontal swipe
+        if (deltaX > 0) {
+            // Swipe right = previous
+            const prevBtn = document.querySelector('#lightbox .nav.prev');
+            if (prevBtn) prevBtn.click();
+        } else {
+            // Swipe left = next
+            const nextBtn = document.querySelector('#lightbox .nav.next');
+            if (nextBtn) nextBtn.click();
+        }
+    }
+}
+    
+    // Initialize
+    function init() {
+        updateNavigationDisplay();
+        lightbox.addEventListener('touchstart', handleTouchStart, { passive: true });
+        lightbox.addEventListener('touchend', handleTouchEnd, { passive: true });
+        window.addEventListener('resize', updateNavigationDisplay);
+        
+        // Update when lightbox opens
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                    if (!lightbox.classList.contains('hidden')) {
+                        updateNavigationDisplay();
+                    }
+                }
+            });
+        });
+        observer.observe(lightbox, { attributes: true });
+    }
+    
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
+})();
+</script>
+
+</body>
+
+</html>

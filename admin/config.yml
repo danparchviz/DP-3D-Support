@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/fulls"
+public_folder: "/images/fulls"
+
+collections:
+  - name: "gallery"
+    label: "Gallery Images"
+    folder: "content/gallery"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["exteriors", "interiors", "product"]}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Order", name: "order", widget: "number", default: 0}
+
+  - name: "content"
+    label: "Page Content"
+    files:
+      - label: "Home Page"
+        name: "home"
+        file: "content/home.json"
+        fields:
+          - {label: "Site Title", name: "site_title", widget: "string", default: "DP 3D Support"}
+          - {label: "Intro Heading", name: "intro_heading", widget: "string"}
+          - {label: "Intro Tagline", name: "intro_tagline", widget: "text"}
+          - {label: "Intro Background Image", name: "intro_bg", widget: "image"}
+          
+          - label: "What I Do Section"
+            name: "what_i_do"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Content", name: "content", widget: "text"}
+              - {label: "Background Image", name: "bg_image", widget: "image"}
+          
+          - label: "Who I Am Section"
+            name: "who_i_am"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Content", name: "content", widget: "markdown"}
+              - {label: "Background Image", name: "bg_image", widget: "image"}
+          
+          - label: "Work Section"
+            name: "work"
+            widget: "object"
+            fields:
+              - {label: "Heading", name: "heading", widget: "string"}
+              - {label: "Subheading", name: "subheading", widget: "string"}
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Social Media"
+        name: "social"
+        file: "content/social.json"
+        fields:
+          - {label: "Twitter URL", name: "twitter", widget: "string", required: false}
+          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}
+          - {label: "LinkedIn URL", name: "linkedin", widget: "string", required: false}
+          - {label: "Dribbble URL", name: "dribbble", widget: "string", required: false}
+          - {label: "Pinterest URL", name: "pinterest", widget: "string", required: false}
