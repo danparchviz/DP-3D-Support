@@ -16,12 +16,13 @@ collections:
           - label: "Gallery Items"
             name: "items"
             widget: "list"
-            summary: "{{fields.order}} - {{fields.title}}"
+            summary: "{{fields.order}} - {{fields.title}} - {{fields.media}}"
             minimize_collapsed: false
+            label_singular: "Gallery Item"
             fields:
-              - {label: "Media", name: "media", widget: "file"}
-              - {label: "Title", name: "title", widget: "string"}
               - {label: "Order", name: "order", widget: "number", default: 0, value_type: "int"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Media", name: "media", widget: "image"}
               - {label: "Type", name: "type", widget: "hidden", default: "image"}
               - {label: "Categories", name: "categories", widget: "hidden", default: ["exteriors"]}
               - {label: "Published", name: "published", widget: "boolean", default: true}
