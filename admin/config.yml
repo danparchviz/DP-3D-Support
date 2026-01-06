@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: danparchviz/DP-3D-Support
+  name: git-gateway
   branch: main
 
 media_folder: "images/fulls"
