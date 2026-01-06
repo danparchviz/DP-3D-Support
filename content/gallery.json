@@ -5,10 +5,20 @@
       "categories": [
         "exteriors"
       ],
-      "order": 0,
+      "order": 1,
       "published": true,
       "media": "/images/fulls/shot01.mp4",
       "title": "Living area"
+    },
+    {
+      "type": "image",
+      "categories": [
+        "exteriors"
+      ],
+      "order": 2,
+      "published": true,
+      "title": "asd",
+      "media": "/images/fulls/1.jpg"
     }
   ]
 }
