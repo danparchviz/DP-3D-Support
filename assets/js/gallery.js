@@ -76,11 +76,11 @@
 
       var mediaHtml = '';
       if (isVid) {
-        mediaHtml = '<video src="' + thumbUrl + '" '
-          + 'autoplay loop muted playsinline '
+        mediaHtml = '<video autoplay loop muted playsinline '
           + 'class="video-thumb" '
-          + 'alt="' + (item.title || 'Gallery video') + '" '
-          + 'loading="lazy">'
+          + 'title="' + (item.title || 'Gallery video') + '">'
+          + '<source src="' + thumbUrl + '" type="video/mp4">'
+          + 'Your browser does not support the video tag.'
           + '</video>';
       } else {
         mediaHtml = '<img src="' + thumbUrl + '" '
