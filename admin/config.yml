@@ -7,21 +7,24 @@ public_folder: "/images/fulls"
 
 collections:
   - name: "gallery"
-    label: "Gallery Items"
-    label_singular: "Gallery Item"
-    folder: "content/gallery"
-    create: true
-    slug: "{{slug}}"
-    sortable_fields: ['order', 'title', 'commit_date']
-    fields:
-      - {label: "Title", name: "title", widget: "string", hint: "Name for this gallery item"}
-      - {label: "Type", name: "type", widget: "select", options: ["image", "video"], default: "image", hint: "Choose image or video"}
-      - {label: "Media File", name: "media", widget: "file", hint: "Upload image (jpg/png) or video (mp4)"}
-      - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Optional: Custom thumbnail (leave empty to use media file)"}
-      - {label: "Categories", name: "categories", widget: "select", multiple: true, options: ["exteriors", "interiors", "product"], hint: "Can select multiple categories"}
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Order", name: "order", widget: "number", default: 0, hint: "Lower numbers appear first (0, 1, 2, 3...)"}
-      - {label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to hide from gallery"}
+    label: "Gallery"
+    files:
+      - label: "Gallery Images"
+        name: "gallery"
+        file: "content/gallery.json"
+        fields:
+          - label: "Gallery Items"
+            name: "items"
+            widget: "list"
+            summary: "{{fields.title}} - Order: {{fields.order}}"
+            fields:
+              - {label: "Title", name: "title", widget: "string", hint: "Name for this item"}
+              - {label: "Type", name: "type", widget: "select", options: ["image", "video"], default: "image"}
+              - {label: "Media File", name: "media", widget: "image", hint: "Upload image or video"}
+              - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Optional custom thumbnail"}
+              - {label: "Categories", name: "categories", widget: "select", multiple: true, options: ["exteriors", "interiors", "product"], default: ["exteriors"]}
+              - {label: "Order", name: "order", widget: "number", default: 0, hint: "Lower numbers appear first"}
+              - {label: "Published", name: "published", widget: "boolean", default: true}
 
   - name: "content"
     label: "Page Content"
