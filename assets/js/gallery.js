@@ -7,6 +7,8 @@
  */
 (function ($) {
   $(function () {
+    console.log('🎨 Gallery.js loaded!');
+
     // ===== CONFIGURATION =====
     var useCMS = true; // Set to false to use legacy numbered system
     var cmsGalleryPath = 'content/gallery/';
@@ -74,8 +76,11 @@
       var primaryCategory = categories[0] || 'uncategorized';
       var allCats = categories.join(' ');
 
+      console.log('Building item:', index, 'Type:', item.type, 'Media:', mediaUrl);
+
       var mediaHtml = '';
       if (isVid) {
+        console.log('Creating video element for:', mediaUrl);
         mediaHtml = '<video autoplay loop muted playsinline '
           + 'class="video-thumb" '
           + 'title="' + (item.title || 'Gallery video') + '">'
