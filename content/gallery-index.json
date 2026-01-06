@@ -1,5 +1,26 @@
 {
-  "generated": "2026-01-06T00:02:49.951Z",
-  "count": 0,
-  "items": []
+  "generated": "2026-01-06T00:23:47.552Z",
+  "count": 2,
+  "items": [
+    {
+      "type": "video",
+      "categories": [
+        "exteriors"
+      ],
+      "order": 1,
+      "published": true,
+      "media": "/images/fulls/shot01.mp4",
+      "title": "Living area"
+    },
+    {
+      "type": "image",
+      "categories": [
+        "exteriors"
+      ],
+      "order": 2,
+      "published": true,
+      "title": "asd",
+      "media": "/images/fulls/1.jpg"
+    }
+  ]
 }
