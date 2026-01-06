@@ -20,8 +20,8 @@ collections:
             fields:
               - {label: "Title", name: "title", widget: "string", hint: "Name for this item"}
               - {label: "Type", name: "type", widget: "select", options: ["image", "video"], default: "image"}
-              - {label: "Media File", name: "media", widget: "image", hint: "Upload image or video"}
-              - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Optional custom thumbnail"}
+              - {label: "Media File", name: "media", widget: "file", hint: "Upload image or video"}
+              - {label: "Thumbnail", name: "thumbnail", widget: "image", required: false, hint: "Optional custom thumbnail (for videos)"}
               - {label: "Categories", name: "categories", widget: "select", multiple: true, options: ["exteriors", "interiors", "product"], default: ["exteriors"]}
               - {label: "Order", name: "order", widget: "number", default: 0, hint: "Lower numbers appear first"}
               - {label: "Published", name: "published", widget: "boolean", default: true}
