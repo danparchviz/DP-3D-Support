@@ -1,3 +1,14 @@
 {
-  "items": []
+  "items": [
+    {
+      "type": "video",
+      "categories": [
+        "exteriors"
+      ],
+      "order": 0,
+      "published": true,
+      "media": "/images/fulls/shot01.mov",
+      "title": "Living area"
+    }
+  ]
 }
