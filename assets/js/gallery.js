@@ -41,13 +41,17 @@
 
     // ===== CMS LOADING =====
     function loadCMSGallery() {
+      console.log('📂 Loading CMS gallery from: content/gallery-index.json');
       return fetch('content/gallery-index.json')
         .then(function(response) {
+          console.log('📥 Response status:', response.status);
           if (!response.ok) throw new Error('CMS gallery not found');
           return response.json();
         })
         .then(function(data) {
+          console.log('📊 CMS data loaded:', data);
           cmsItems = data.items || [];
+          console.log('📦 Total items before filtering:', cmsItems.length);
           // Sort by order field
           cmsItems.sort(function(a, b) {
             return (a.order || 0) - (b.order || 0);
@@ -56,11 +60,14 @@
           cmsItems = cmsItems.filter(function(item) {
             return item.published !== false;
           });
+          console.log('✅ Published items:', cmsItems.length);
+          console.log('🎬 First item:', cmsItems[0]);
           cmsLoaded = true;
           totalImages = cmsItems.length;
           return cmsItems;
         })
         .catch(function(error) {
+          console.error('❌ CMS gallery error:', error);
           console.log('CMS gallery not available, using legacy system:', error);
           useCMS = false;
           cmsLoaded = false;
