@@ -4,6 +4,7 @@
   "description": "3D Support Portfolio Website with CMS",
   "scripts": {
     "build:gallery": "node build-gallery.js",
+    "import:gallery": "node bulk-import-gallery.js",
     "prebuild": "npm run build:gallery"
   },
   "keywords": ["portfolio", "3d", "netlify-cms"],

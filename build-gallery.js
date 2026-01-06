@@ -31,8 +31,20 @@ function buildGalleryIndex() {
   // Sort by order
   items.sort((a, b) => (a.order || 0) - (b.order || 0));
 
-  // Filter published items
-  const publishedItems = items.filter(item => item.published !== false);
+  // Filter published items and auto-detect type
+  const publishedItems = items
+    .filter(item => item.published !== false)
+    .map(item => {
+      // Auto-detect video files
+      const mediaPath = item.media || '';
+      const ext = mediaPath.toLowerCase().split('.').pop();
+      const videoExtensions = ['mp4', 'webm', 'ogg', 'mov', 'avi', 'mkv'];
+
+      return {
+        ...item,
+        type: videoExtensions.includes(ext) ? 'video' : 'image'
+      };
+    });
 
   console.log(`${publishedItems.length} published items`);
 
